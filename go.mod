@@ -3,6 +3,7 @@ module github.com/joaosouzadev/go-hexagonal-arch
 go 1.18
 
 require (
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/golang/mock v1.6.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/stretchr/testify v1.8.0

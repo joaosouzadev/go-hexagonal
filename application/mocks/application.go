@@ -118,6 +118,20 @@ func (mr *MockProductInterfaceMockRecorder) GetPrice() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrice", reflect.TypeOf((*MockProductInterface)(nil).GetPrice))
 }
 
+// GetUuid mocks base method.
+func (m *MockProductInterface) GetUuid() string {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetUuid")
+	ret0, _ := ret[0].(string)
+	return ret0
+}
+
+// GetUuid indicates an expected call of GetUuid.
+func (mr *MockProductInterfaceMockRecorder) GetUuid() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUuid", reflect.TypeOf((*MockProductInterface)(nil).GetUuid))
+}
+
 // IsActive mocks base method.
 func (m *MockProductInterface) IsActive() bool {
 	m.ctrl.T.Helper()

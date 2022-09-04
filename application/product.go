@@ -11,6 +11,7 @@ type ProductInterface interface {
 	Enable() error
 	Disable() error
 	GetId() string
+	GetUuid() string
 	GetName() string
 	GetPrice() int
 	IsActive() bool
@@ -39,6 +40,7 @@ type ProductPersistenceInterface interface {
 
 type Product struct {
 	ID      string
+	Uuid    string
 	Name    string
 	Price   int
 	Active  bool
@@ -47,7 +49,7 @@ type Product struct {
 
 func NewProduct() *Product {
 	return &Product{
-		ID:     uuid.NewV4().String(),
+		Uuid:   uuid.NewV4().String(),
 		Active: false,
 	}
 }
@@ -80,6 +82,10 @@ func (p *Product) Disable() error {
 
 func (p *Product) GetId() string {
 	return p.ID
+}
+
+func (p *Product) GetUuid() string {
+	return p.Uuid
 }
 
 func (p *Product) GetName() string {
