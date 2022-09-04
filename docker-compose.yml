@@ -1,0 +1,45 @@
+version: "3.8"
+
+networks:
+  nw_mysql:
+
+volumes:
+  mysql-data:
+    driver: local
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/opt/app
+    networks:
+      - nw_mysql
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql
+    networks:
+      nw_mysql:
+        aliases:
+          - mysql_main
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=hexagonal
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/init/mysql:/docker-entrypoint-initdb.d
+    healthcheck:
+      test:
+        [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uadmin", "-padmin" ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
