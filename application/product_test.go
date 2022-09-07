@@ -44,7 +44,7 @@ func TestProduct_IsValid(t *testing.T) {
 
 	valid, err := product.IsValid()
 	require.False(t, valid)
-	require.Equal(t, "price cannot be less than zero", err.Error())
+	require.Equal(t, "product price cannot be less than zero", err.Error())
 }
 
 // TODO: other tests

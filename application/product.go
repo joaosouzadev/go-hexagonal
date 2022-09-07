@@ -2,7 +2,6 @@ package application
 
 import (
 	"errors"
-
 	uuid "github.com/satori/go.uuid"
 )
 
@@ -20,7 +19,7 @@ type ProductInterface interface {
 
 type ProductServiceInterface interface {
 	Get(id string) (ProductInterface, error)
-	Create(name string, price int) (ProductInterface, error)
+	Create(dto ProductInputDto) (ProductInterface, error)
 	Enable(product ProductInterface) (ProductInterface, error)
 	Disable(product ProductInterface) (ProductInterface, error)
 }
@@ -39,24 +38,31 @@ type ProductPersistenceInterface interface {
 }
 
 type Product struct {
-	ID      string
-	Uuid    string
-	Name    string
-	Price   int
-	Active  bool
-	OnStock bool
+	ID      string `json:"id,omitempty"`
+	Uuid    string `json:"uuid"`
+	Name    string `json:"name"`
+	Price   int    `json:"price"`
+	Active  bool   `json:"active"`
+	OnStock bool   `json:"on_stock"`
 }
 
-func NewProduct() *Product {
+func NewProduct(name string, price int, active bool, onStock bool) *Product {
 	return &Product{
-		Uuid:   uuid.NewV4().String(),
-		Active: false,
+		Uuid:    uuid.NewV4().String(),
+		Name:    name,
+		Price:   price,
+		Active:  active,
+		OnStock: onStock,
 	}
 }
 
 func (p *Product) IsValid() (bool, error) {
+	if len(p.Name) < 2 {
+		return false, errors.New("product name must be at least 2 characters long")
+	}
+
 	if p.Price < 0 {
-		return false, errors.New("price cannot be less than zero")
+		return false, errors.New("product price cannot be less than zero")
 	}
 
 	return true, nil

@@ -37,7 +37,12 @@ func TestProductService_Create(t *testing.T) {
 		Persistence: persistence,
 	}
 
-	result, err := service.Create("GeForce RTX 3060", 35000)
+	dto := application.ProductInputDto{
+		Name:  "GeForce RTX 3060",
+		Price: 35000,
+	}
+
+	result, err := service.Create(dto)
 	require.Nil(t, err)
 	require.Equal(t, product, result)
 }

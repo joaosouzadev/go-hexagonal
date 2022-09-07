@@ -31,9 +31,9 @@ func setUp() {
 }
 
 func createRandomProduct() *application.Product {
-	product := application.NewProduct()
-	product.Name = utils.RandomString(40)
-	product.Price = rand.Intn(10000)
+	name := utils.RandomString(40)
+	price := rand.Intn(10000)
+	product := application.NewProduct(name, price, false, false)
 
 	return product
 }

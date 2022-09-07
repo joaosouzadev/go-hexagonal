@@ -1,4 +1,4 @@
-CREATE table product (
+CREATE table product IF NOT EXISTS (
      id serial PRIMARY KEY,
      uuid VARCHAR(255) NOT NULL,
      name VARCHAR (200) NOT NULL,
