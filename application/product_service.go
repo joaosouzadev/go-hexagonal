@@ -17,10 +17,8 @@ func (s *ProductService) Get(id string) (ProductInterface, error) {
 	return product, nil
 }
 
-func (s *ProductService) Create(name string, price int) (ProductInterface, error) {
-	product := NewProduct()
-	product.Name = name
-	product.Price = price
+func (s *ProductService) Create(dto ProductInputDto) (ProductInterface, error) {
+	product := NewProduct(dto.Name, dto.Price, dto.Active, dto.OnStock)
 
 	_, err := product.IsValid()
 	if err != nil {
