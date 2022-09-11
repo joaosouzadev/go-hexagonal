@@ -14,14 +14,14 @@ func NewProductDb(db *sql.DB) *ProductDb {
 	return &ProductDb{db: db}
 }
 
-func (a *ProductDb) Get(id string) (application.ProductInterface, error) {
+func (a *ProductDb) Get(uuid string) (application.ProductInterface, error) {
 	var product application.Product
-	stmt, err := a.db.Prepare("SELECT id, uuid, name, price, active, on_stock FROM products WHERE id = ?")
+	stmt, err := a.db.Prepare("SELECT id, uuid, name, price, active, on_stock FROM product WHERE uuid = ?")
 	if err != nil {
 		return nil, err
 	}
 
-	err = stmt.QueryRow(id).Scan(&product.ID, &product.Uuid, &product.Name, &product.Price, &product.Active, &product.OnStock)
+	err = stmt.QueryRow(uuid).Scan(&product.ID, &product.Uuid, &product.Name, &product.Price, &product.Active, &product.OnStock)
 	if err != nil {
 		return nil, err
 	}

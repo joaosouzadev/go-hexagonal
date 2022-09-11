@@ -63,3 +63,23 @@ func TestProductDb_Save(t *testing.T) {
 	require.NotEqual(t, oldName, result.GetName())
 	require.NotEqual(t, oldPrice, result.GetPrice())
 }
+
+func TestProductDb_Get(t *testing.T) {
+	setUp()
+	product := createRandomProduct()
+	defer Db.Close()
+
+	productDb := db.NewProductDb(Db)
+	result, err := productDb.Save(product)
+	require.Nil(t, err)
+	require.Equal(t, product.GetUuid(), result.GetUuid())
+	require.Equal(t, product.GetName(), result.GetName())
+	require.Equal(t, product.GetPrice(), result.GetPrice())
+	require.Equal(t, product.IsActive(), result.IsActive())
+	require.Equal(t, product.GetOnStock(), result.GetOnStock())
+
+	productFromDb, err := productDb.Get(result.GetUuid())
+	require.Nil(t, err)
+	require.Equal(t, result.GetUuid(), productFromDb.GetUuid())
+	require.Equal(t, result.GetName(), productFromDb.GetName())
+}

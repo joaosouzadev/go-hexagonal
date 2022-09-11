@@ -21,6 +21,7 @@ func NewAPIServer(app *app.App) *APIServer {
 
 func (a *APIServer) Start() {
 	a.httpServer.POST("/products", a.productHandler.NewProduct)
+	a.httpServer.GET("/product/:uuid", a.productHandler.GetProduct)
 
 	err := a.httpServer.Run(":9000")
 	if err != nil {
