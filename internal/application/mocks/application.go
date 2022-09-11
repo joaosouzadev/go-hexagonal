@@ -5,10 +5,10 @@
 package mock_application
 
 import (
+	"github.com/joaosouzadev/go-hexagonal-arch/internal/application"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	application "github.com/joaosouzadev/go-hexagonal-arch/application"
 )
 
 // MockProductInterface is a mock of ProductInterface interface.

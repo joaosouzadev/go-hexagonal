@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/joaosouzadev/go-hexagonal-arch/adapters/server"
+	"github.com/joaosouzadev/go-hexagonal-arch/internal/adapters/server"
 	"github.com/joaosouzadev/go-hexagonal-arch/pkg/app"
 )
 
