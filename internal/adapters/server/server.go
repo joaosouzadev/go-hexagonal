@@ -2,7 +2,7 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/joaosouzadev/go-hexagonal-arch/adapters/server/handler"
+	"github.com/joaosouzadev/go-hexagonal-arch/internal/adapters/server/handler"
 	"github.com/joaosouzadev/go-hexagonal-arch/pkg/app"
 	"log"
 )

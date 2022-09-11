@@ -2,8 +2,8 @@ package application_test
 
 import (
 	"github.com/golang/mock/gomock"
-	"github.com/joaosouzadev/go-hexagonal-arch/application"
-	mock_application "github.com/joaosouzadev/go-hexagonal-arch/application/mocks"
+	application2 "github.com/joaosouzadev/go-hexagonal-arch/internal/application"
+	"github.com/joaosouzadev/go-hexagonal-arch/internal/application/mocks"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -16,7 +16,7 @@ func TestProductService_Get(t *testing.T) {
 	persistence := mock_application.NewMockProductPersistenceInterface(ctrl)
 	persistence.EXPECT().Get(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := application.ProductService{
+	service := application2.ProductService{
 		Persistence: persistence,
 	}
 
@@ -33,11 +33,11 @@ func TestProductService_Create(t *testing.T) {
 	persistence := mock_application.NewMockProductPersistenceInterface(ctrl)
 	persistence.EXPECT().Save(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := application.ProductService{
+	service := application2.ProductService{
 		Persistence: persistence,
 	}
 
-	dto := application.ProductInputDto{
+	dto := application2.ProductInputDto{
 		Name:  "GeForce RTX 3060",
 		Price: 35000,
 	}
@@ -58,7 +58,7 @@ func TestProductService_Enable(t *testing.T) {
 	persistence := mock_application.NewMockProductPersistenceInterface(ctrl)
 	persistence.EXPECT().Save(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := application.ProductService{
+	service := application2.ProductService{
 		Persistence: persistence,
 	}
 
@@ -79,7 +79,7 @@ func TestProductService_Disable(t *testing.T) {
 	persistence := mock_application.NewMockProductPersistenceInterface(ctrl)
 	persistence.EXPECT().Save(gomock.Any()).Return(product, nil).AnyTimes()
 
-	service := application.ProductService{
+	service := application2.ProductService{
 		Persistence: persistence,
 	}
 

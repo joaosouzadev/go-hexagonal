@@ -2,7 +2,7 @@ package db
 
 import (
 	"database/sql"
-	"github.com/joaosouzadev/go-hexagonal-arch/application"
+	"github.com/joaosouzadev/go-hexagonal-arch/internal/application"
 	"log"
 )
 

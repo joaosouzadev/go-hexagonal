@@ -2,9 +2,9 @@ package db_test
 
 import (
 	"database/sql"
-	"github.com/joaosouzadev/go-hexagonal-arch/adapters/db"
-	"github.com/joaosouzadev/go-hexagonal-arch/application"
-	"github.com/joaosouzadev/go-hexagonal-arch/utils"
+	"github.com/joaosouzadev/go-hexagonal-arch/internal/adapters/db"
+	"github.com/joaosouzadev/go-hexagonal-arch/internal/application"
+	"github.com/joaosouzadev/go-hexagonal-arch/pkg/utils"
 	"github.com/stretchr/testify/require"
 	"log"
 	"math/rand"

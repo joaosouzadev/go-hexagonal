@@ -1,7 +1,7 @@
 package application_test
 
 import (
-	"github.com/joaosouzadev/go-hexagonal-arch/application"
+	"github.com/joaosouzadev/go-hexagonal-arch/internal/application"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
